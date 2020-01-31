@@ -1,0 +1,28 @@
+.container-fluid {
+    border: 0.5px solid #e3e4e6;
+
+}
+
+
+.search_form {
+    background-color: #d9d6d6;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.form-control::placeholder {
+    text-align: center;
+
+}
+
+.contacts {    background-color: whitesmoke;
+}
+.category{
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+.media {
+    height: 4rem;
+    border-bottom: 1px solid #e3e4e6;
+}
+

@@ -1,1 +1,50 @@
-<p>add-contact works!</p>
+<section class="container">
+  <section class="row">
+    <section class="col">
+      <h2 class="title">Add a New Contact</h2>
+    </section></section>
+    <section class="row">
+    <section class="col">
+      <div class="media">
+        <a class="d-flex align-self-start" href="#">
+          <img src="" alt="">
+        </a>
+        <div class="media-body">
+          <p>Add Photo</p>
+        </div>
+      </div>
+    </section></section>
+    <section class="row">
+      <section class="col">
+        <form #f="ngForm" (ngSubmit)="addContact()">
+          <input  ngModel #name type="text"
+           class="form-control" placeholder="First Name" required>
+          <div class="alert alert-danger"
+           *ngIf="name.invalid && name.touched">Name is required</div>
+          <input  ngModel #lname type="text"
+           class="form-control" placeholder="Last Name"required>
+          <div class="alert alert-danger"
+           *ngIf="lname.invalid && lname.touched">Name is required</div>
+
+          <div class="row">
+            <div class="col-md-2">
+              <input  ngModel type="number"
+               class="form-control" placeholder="Last Name">
+            </div>
+            <div class="col-md-10">
+              <input ngModel #email type="text"
+               class="form-control" placeholder="Email Address">
+              <div class="alert alert-danger"
+               *ngIf="email.touched && email.errors?.required">Email is required</div>
+            <div class="alert alert-danger"
+             *ngIf="email.touched && email.errors?.email">Your input doesn't match email format</div>
+
+            </div>
+          </div>
+          <button [disabled]="f.invalid" class="btn btn-primary d-block m-auto">Add Contacts</button>
+          <button class="btn btn-success d-block m-auto">Cancle</button>
+        </form>
+      </section>
+    </section>
+  </section>
+

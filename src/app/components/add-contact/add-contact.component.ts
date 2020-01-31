@@ -9,6 +9,10 @@ export class AddContactComponent implements OnInit {
 
   constructor() { }
 
+  addContact() {
+
+  }
+
   ngOnInit() {
   }
 

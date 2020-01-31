@@ -1,1 +1,45 @@
-<p>home works!</p>
+<section class="container-fluid">
+    <h1 class="text-center" >Contact List</h1>
+    <section class="row">
+        <section class="col">
+            <form action="" method="post" class="search_form px-5 py-2">
+                <input type="text" class="form-control rounded-pill" placeholder="Search Contact">
+            </form>
+        </section>
+    </section>
+    <section class="contacts">
+        <section class="row">
+            <section class="col-sm-11"><p class="category p-1">Add New Contact</p></section>
+            <section class="col-sm-1"><i class="fas fa-plus"></i></section>
+        </section>
+        <section class="latest_contacts bg-white">
+            <p class="category p-1">Latest Contacts</p>
+            <div class="media mb-2 p-1" *ngFor="let item of recentContacts">
+                <a class="d-flex h-100" href="#">
+                    <img [src]="item.image == null || undefined ? item.image:img" alt="" class="h-100">
+                </a>
+                <div class="media-body p-1">
+                    <h5 class="mb-0 text-capitalize">{{item.firstName}} {{item.lastName}}</h5>
+                    <p class="small">0{{item.mobileNumber}}</p>
+                </div>
+            </div>
+        </section>
+        <section class="contacts_list bg-white ">
+            <div class="category p-1">A</div>
+        <div class="media mb-2 p-1" *ngFor="let contact of contacts">
+            <a class="d-flex h-100" href="#">
+                <img [src]="contact.image == null || undefined ? contact.image:img" alt="" class="h-100">
+            </a>
+            <div class="media-body p-1">
+                <h5 class="mb-0 text-capitalize">{{contact.firstName}} {{contact.lastName}}</h5>
+                <p class="small">{{contact.email}}</p>
+            </div>
+        </div>
+    </section>
+    </section>
+
+
+</section>
+
+
+<!-- contact.image == null || undefined ? contact.image:img -->
