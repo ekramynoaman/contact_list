@@ -22,18 +22,23 @@ export class HomeComponent implements OnInit {
     this.contactsSer.getContacts().subscribe(data => {
       this.contacts = data.data;
       console.table(this.contacts);
-      
+      this.contacts = this.contacts.concat(this.contactsSer.newContacts);
+      console.table(this.contacts);
+
       });
-    // Get recent contacts  
+    // Get recent contacts
     this.recent.getRecentContacts().subscribe(data => {
       this.recentContacts = data.data;
       console.table(this.recentContacts);
       });
 
+      // add new contact
+
+
    }
 
   // filterContacts () {
-    
+
   // }
 
   ngOnInit() {
@@ -44,3 +49,8 @@ export class HomeComponent implements OnInit {
 
 
 }
+/* todo
+- category by click bay scroll with sort
+
+
+*/

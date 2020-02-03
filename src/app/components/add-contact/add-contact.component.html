@@ -1,50 +1,127 @@
 <section class="container">
-  <section class="row">
-    <section class="col">
-      <h2 class="title">Add a New Contact</h2>
-    </section></section>
-    <section class="row">
-    <section class="col">
-      <div class="media">
-        <a class="d-flex align-self-start" href="#">
-          <img src="" alt="">
+  <form #f="ngForm" (ngSubmit)="addContact(f)" class="w-100">
+    <h2 class="title">Add a New Contact</h2>
+
+  <section class="form-row">
+  
+    <section class="col-12">
+      <div class="media w-100 flex-column justify-content-between">
+        <a class="d-flex h-100 m-auto mb-2 border-danger" href="#">
+          <img src="../../assets/avatar.png" alt="" class="h-100">
         </a>
-        <div class="media-body">
-          <p>Add Photo</p>
         </div>
-      </div>
-    </section></section>
-    <section class="row">
-      <section class="col">
-        <form #f="ngForm" (ngSubmit)="addContact()">
-          <input  ngModel #name type="text"
-           class="form-control" placeholder="First Name" required>
-          <div class="alert alert-danger"
-           *ngIf="name.invalid && name.touched">Name is required</div>
-          <input  ngModel #lname type="text"
-           class="form-control" placeholder="Last Name"required>
-          <div class="alert alert-danger"
-           *ngIf="lname.invalid && lname.touched">Name is required</div>
+        
+          <!-- 
+          <input ngModle name="image" #image="ngModel" type="file"
+           
+          class="form-control"> -->
 
-          <div class="row">
-            <div class="col-md-2">
-              <input  ngModel type="number"
-               class="form-control" placeholder="Last Name">
-            </div>
-            <div class="col-md-10">
-              <input ngModel #email type="text"
-               class="form-control" placeholder="Email Address">
-              <div class="alert alert-danger"
-               *ngIf="email.touched && email.errors?.required">Email is required</div>
-            <div class="alert alert-danger"
-             *ngIf="email.touched && email.errors?.email">Your input doesn't match email format</div>
+          <section class="form-group col-12">
+            <label for="#addImage">Add Photo</label>
+            <input ngModel name="image" 
+            #image="ngModel" type="file"  
+            class="form-control" id="addImage" (change)="changImg(image.value)">
 
-            </div>
-          </div>
-          <button [disabled]="f.invalid" class="btn btn-primary d-block m-auto">Add Contacts</button>
-          <button class="btn btn-success d-block m-auto">Cancle</button>
-        </form>
-      </section>
+          </section>
+      
     </section>
-  </section>
 
+    <!-- Start form -->
+      <section class="form-group col-12">
+        <input ngModel name="firstName" 
+        #firstName="ngModel" type="text" pattern="^[A-Za-z]{3,9}$" 
+        class="form-control" placeholder="First Name" required>
+        <div class="alert alert-danger" >
+          <div *ngIf="firstName.touched && firstName.errors?.required">
+          First Name is required</div>
+          <div *ngIf="firstName.touched && firstName.errors?.pattern">
+          First Name is invalid</div><!-- End First Name Input -->
+        </div>
+      </section>
+    <!-- End Form group -->
+      <section class="form-group col-12">
+        <input 
+        ngModel 
+        #lname="ngModel"
+        name="lastName"
+        pattern="^[A-Za-z]{3,9}$" 
+        required
+        (change)="log(lname)"
+        id="lastName"
+        type="text" 
+        class="form-control" 
+        placeholder="Last Name">
+        <div class="alert alert-danger" >
+          <div *ngIf="lname.touched && lname.errors?.required">
+          Last Name is required</div>
+          <div *ngIf="lname.touched && lname.errors?.pattern">
+          Last Name is invalid</div><!-- End First Name Input -->
+      </div>
+    </section>
+
+      <section class="form-group d-flex col-12">
+        <select
+        ngModel 
+        #city="ngModel" 
+        required
+        id="cityCode" 
+        name="cityCode" 
+        type="text" 
+        class="form-control w-25">
+        <option value=""></option>
+        <option *ngFor="let code of phoneCodes;" class="text-right">+{{code}}</option>
+      </select>
+        <input 
+        ngModel 
+        #phone="ngModel"
+        pattern="^(\d{10}){1}?$"
+        minlength="7"
+        maxlength="11" 
+        required 
+        id="mobileNumber" 
+        name="mobileNumber" 
+        type="text" 
+        class="form-control">
+        <div class="alert alert-danger">
+          <div *ngIf="phone.touched && phone.errors?.required">
+        Phone Number is required.</div>
+        <div *ngIf="phone.touched && phone.errors?.minlength">
+        minimum 7 digits.</div>
+        <div *ngIf="phone.touched && phone.errors?.maxlength">
+        maximum 10 digits.</div>
+        <div *ngIf="phone.touched && phone.errors?.pattern">
+        the number not vaild.</div>
+      </div><!-- End Phone Number Input -->
+      </section>
+      <section class="form-group col-12">
+        <input 
+        ngModel 
+        #email="ngModel"
+        name="email"
+        pattern="^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" 
+        required 
+        id="email"
+        placeholder="Email Address"
+        type="text" 
+        class="form-control">
+         <div class="alert alert-danger"> 
+        <div *ngIf="email.touched && email.errors?.required">
+        Email is required</div>
+        <div *ngIf="email.touched && email.errors?.pattern">
+        Your input doesn't match email format
+        </div>
+      </div><!-- End Email Input -->
+    </section>
+
+
+      <button 
+      [disabled]="f.invalid" 
+      class="btn btn-primary d-block m-auto">
+      Add Contacts
+      </button>
+      <button class="btn btn-success d-block m-auto">Cancle</button>
+  <p>{{f.value | json}}</p>
+</section>
+</form>
+
+</section>

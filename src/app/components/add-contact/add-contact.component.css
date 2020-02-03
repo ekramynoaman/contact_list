@@ -1,0 +1,19 @@
+.media {
+    height: 8rem;
+    border-bottom: 1px solid #e3e4e6;
+}
+
+.media-body {
+    border: 1px solid green
+}
+
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #000;
+    border-radius: 0;
+}
+
+.form-control.ng-touched.ng-invalid {
+    border-color: red;
+}
