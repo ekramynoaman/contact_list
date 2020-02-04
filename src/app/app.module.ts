@@ -8,12 +8,14 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { SearchPipe } from './pipes/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AddContactComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,9 @@ export class AddContactComponent implements OnInit {
 // nameReg = '^[A-Z][a-zA-Z]$';
 // emailReg = '^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$';
 imgUrl = '';
+
+
+
 // country codes
 countriesCode = {
   BD: '880',
@@ -32,9 +35,7 @@ countriesCode = {
   BJ: '229',
   BT: '975',
   JM: '1-876',
-  BW: '267',
-  WS: '685',
-  BQ: '599',
+  BW: '267', WS: '685', BQ: '599',
   BR: '55',
   BS: '1-242',
   JE: '44-1534',
@@ -194,33 +195,7 @@ countriesCode = {
   SI: '386',
   KP: '850',
   KW: '965',
-  SN: '221',
-  SM: '378',
-  SL: '232',
-  SC: '248',
-  KZ: '7',
-  KY: '1-345',
-  SG: '65',
-  SE: '46',
-  SD: '249',
-  DO: '1-809',
-  DO2: '1-829',
-  DM: '+1-767',
-  DJ: '253',
-  DK: '45',
-  VG: '1-284',
-  DE: '49',
-  YE: '967',
-  DZ: '213',
-  US: '1',
-  UY: '598',
-  YT: '262',
-  UM: '1',
-  LB: '961',
-  LC: '1-758',
-  LA: '856',
-  TV: '688',
-  TW: '886',
+  SN: '221', SM: '378', SL: '232', SC: '248', KZ: '7', KY: '1-345', SG: '65', SE: '46', SD: '249', DO: '1-809', DO2: '1-829', DM: '+1-767', DJ: '253', DK: '45', VG: '1-284', DE: '49', YE: '967', DZ: '213', US: '1', UY: '598', YT: '262', UM: '1', LB: '961', LC: '1-758', LA: '856', TV: '688', TW: '886',
   TT: '1-868',
   TR: '90',
   LK: '94',
@@ -246,22 +221,7 @@ countriesCode = {
   VI: '1-340',
   IS: '354',
   IR: '98',
-  AM: '374',
-  AL: '355',
-  AO: '244',
-  AS: '1-684',
-  AR: '54',
-  AU: '61',
-  AT: '43',
-  AW: '297',
-  IN: '91',
-  AX: '358-18',
-  AZ: '994',
-  IE: '353',
-  ID: '62',
-  UA: '380',
-  QA: '974',
-  MZ: '258'
+  AM: '374', AL: '355', AO: '244', AS: '1-684', AR: '54', AU: '61', AT: '43', AW: '297', IN: '91', AX: '358-18', AZ: '994', IE: '353', ID: '62', UA: '380', QA: '974', MZ: '258'
   };
 // convert countries object to array
   phoneCodes = Object.values(this.countriesCode);

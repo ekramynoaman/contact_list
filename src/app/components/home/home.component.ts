@@ -14,6 +14,12 @@ export class HomeComponent implements OnInit {
   contacts: any = [];
   recentContacts: any = [];
 
+  // Array of Alphabet
+  chars: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'U', 'W', 'X', 'Y', 'Z'];
+
+  // letter for search
+  letter: string;
+
   img = '../../assets/avatar.png';
 
 

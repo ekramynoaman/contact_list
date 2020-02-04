@@ -15,11 +15,20 @@
 
 }
 
+.letters_bar {
+    width: 1rem;
+    position: absolute;
+    right: 0;
+    top: 16px;
+    z-index: 999;
+}
+
 .contacts {    background-color: whitesmoke;
 }
 .category{
-    background-color: whitesmoke;
+    background-color: rgb(204, 198, 198);
     font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 .media {
     height: 4rem;
