@@ -10,44 +10,37 @@ import contacts from '../../assets/contacts.json';
 })
 export class ContactsService {
 
-// new contacts
-newContacts: any[] = [];
+  // new contacts
+  newContacts: any[] = [];
   constructor() {
-
+    // Check if localStorge has contacts
     const savedContacts = localStorage.getItem('contacts');
     if (savedContacts) {
     this.newContacts = JSON.parse(savedContacts);
     } else {
     this.newContacts = [];
     }
-    console.log(this.newContacts);
-}
+  }
 
-
-
-
-
-
-
+  // Get contacts from json file
   getContacts(): Observable<any> {
     return of(contacts).pipe();
-}
+  }
 
-// Add new contact
-addNewContact(userId, email, userName, image, mobilNumber, firstName, lastName,) {
-  this.newContacts.push({
-    userId,
-    email,
-    userName,
-    image,
-    mobilNumber,
-    firstName,
-    lastName,
-  });
-  localStorage.setItem('contacts', JSON.stringify(this.newContacts));
-  console.log(this.newContacts);
+  // Add new contact
+  addNewContact(userId, email, userName, image, mobilNumber, firstName, lastName) {
+    this.newContacts.push({
+      userId,
+      email,
+      userName,
+      image,
+      mobilNumber,
+      firstName,
+      lastName,
+    });
+    localStorage.setItem('contacts', JSON.stringify(this.newContacts));
 
-}
+  }
 
 
 

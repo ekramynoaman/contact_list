@@ -1,62 +1,61 @@
-import { RecentContactsService } from './../../services/recent-contacts.service';
-import { Observable } from 'rxjs';
-import { ContactsService } from './../../services/contacts.service';
 import { Component, OnInit } from '@angular/core';
-import { Contacts } from 'src/app/interfaces/contacts';
+import { fade } from './../../animations/animations';
+import { RecentContactsService } from './../../services/recent-contacts.service';
+import { ContactsService } from './../../services/contacts.service';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [fade]
 })
 export class HomeComponent implements OnInit {
 
+  // Contacts array
   contacts: any = [];
+
+  // Contacts array
   recentContacts: any = [];
 
-  // Array of Alphabet
-  chars: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'U', 'W', 'X', 'Y', 'Z'];
+  // Array of Alphabet catagories
+  chars: string[] = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'U', 'W', 'X', 'Y', 'Z'
+  ];
 
   // letter for search
   letter: string;
 
+  // for static img
   img = '../../assets/avatar.png';
-
 
   constructor(private contactsSer: ContactsService, private recent: RecentContactsService) {
     // Get all contacts
     this.contactsSer.getContacts().subscribe(data => {
       this.contacts = data.data;
-      console.table(this.contacts);
+
+
+      // Add new contacts to all contacts array
       this.contacts = this.contacts.concat(this.contactsSer.newContacts);
-      console.table(this.contacts);
+
 
       });
-    // Get recent contacts
+
+    // Get Latest contacts
     this.recent.getRecentContacts().subscribe(data => {
       this.recentContacts = data.data;
-      console.table(this.recentContacts);
       });
 
-      // add new contact
-
-
    }
-
-  // filterContacts () {
-
-  // }
 
   ngOnInit() {
 
 
-}
+  }
 
 
 
 }
-/* todo
-- category by click bay scroll with sort
 
-
-*/

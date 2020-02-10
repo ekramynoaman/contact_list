@@ -1,127 +1,94 @@
 <section class="container">
-  <form #f="ngForm" (ngSubmit)="addContact(f)" class="w-100">
+  <!-- Start The Form -->
+  <form #f="ngForm" (ngSubmit)="addContact(f)" class="w-100" @fade>
     <h2 class="title">Add a New Contact</h2>
+    <section class="form-row">
+      <!-- Add Photo -->
+      <section class="col-12">
+        <section class="media w-100 flex-column justify-content-between">
+          <a class="h-100 mx-auto border-danger" href="#">
+            <img src="../../assets/avatar.png" alt="" class="h-100">
+          </a>
+        </section>
+        <section class="text-center form-group col-12">
+          <label for="#addImage" class="imgLabel" (click)="chooseFile()">Add Photo</label>
+          <input *ngIf="show" ngModel name="image" #image="ngModel" type="file" class="form-control" id="addImage"
+            (change)="changImg(image.value)">
+        </section>
+      </section>
 
-  <section class="form-row">
-  
-    <section class="col-12">
-      <div class="media w-100 flex-column justify-content-between">
-        <a class="d-flex h-100 m-auto mb-2 border-danger" href="#">
-          <img src="../../assets/avatar.png" alt="" class="h-100">
-        </a>
-        </div>
-        
-          <!-- 
-          <input ngModle name="image" #image="ngModel" type="file"
-           
-          class="form-control"> -->
-
-          <section class="form-group col-12">
-            <label for="#addImage">Add Photo</label>
-            <input ngModel name="image" 
-            #image="ngModel" type="file"  
-            class="form-control" id="addImage" (change)="changImg(image.value)">
-
+      <!-- First Name input -->
+      <section class="form-group col-12">
+        <input ngModel name="firstName" #firstName="ngModel" 
+          type="text" pattern="^[A-Za-z]{3,9}$" class="form-control"
+          placeholder="First Name" required>
+        <!-- First Name Alarts -->
+        <section class="alert alert-danger pb-0">
+          <section *ngIf="firstName.touched && firstName.errors?.required">
+            First Name is required</section>
+          <section *ngIf="firstName.touched && firstName.errors?.pattern">
+            First Name is invalid</section>
+        </section>
+      </section>
+      <!-- Last Name input -->
+      <section class="form-group col-12">
+        <input ngModel name="lastName" #lname="ngModel" 
+          type="text" pattern="^[A-Za-z]{3,9}$" class="form-control" 
+          placeholder="Last Name" required>
+        <!-- Last Name Alarts -->
+        <section class="alert alert-danger pb-0">
+          <section *ngIf="lname.touched && lname.errors?.required">
+            Last Name is required</section>
+          <section *ngIf="lname.touched && lname.errors?.pattern">
+            Last Name is invalid</section>
+        </section>
+      </section>
+      <!-- City Code select -->
+      <section class="form-group  col-12">
+        <section class="d-flex">
+          <select ngModel #city="ngModel" id="cityCode" name="cityCode" type="text"
+            class="form-control w-25 mr-1 custom-select text-right" required>
+            <option value=""></option>
+            <option *ngFor="let code of phoneCodes;" class="text-right">+{{code}}</option>
+          </select>
+          <!-- Mobile Number input -->
+          <input ngModel #phone="ngModel" pattern="^(\d{10}){1}?$" 
+            minlength="7" maxlength="11" id="mobileNumber" name="mobileNumber" 
+            type="text" class="form-control" placeholder="Mobile Number"  required>
+        </section>
+        <!-- Mobile Number Alerts -->
+        <section class="alert alert-danger pb-0">
+          <section *ngIf="phone.touched && phone.errors?.required">
+            Phone Number is required.</section>
+          <section *ngIf="phone.touched && phone.errors?.minlength">
+            minimum 7 digits.</section>
+          <section *ngIf="phone.touched && phone.errors?.maxlength">
+            maximum 10 digits.</section>
+          <section *ngIf="phone.touched && phone.errors?.pattern">
+            the number not vaild.</section>
+        </section>
+      </section>
+      <!-- Email input -->
+      <section class="form-group col-12">
+        <input ngModel #email="ngModel" name="email"
+          pattern="^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+          required id="email" placeholder="Email Address" type="text" class="form-control">
+        <!-- Email Alarts -->
+        <section class="alert alert-danger pb-0">
+          <section *ngIf="email.touched && email.errors?.required">
+            Email is required</section>
+          <section *ngIf="email.touched && email.errors?.pattern">
+            Your input doesn't match email format
           </section>
-      
-    </section>
-
-    <!-- Start form -->
-      <section class="form-group col-12">
-        <input ngModel name="firstName" 
-        #firstName="ngModel" type="text" pattern="^[A-Za-z]{3,9}$" 
-        class="form-control" placeholder="First Name" required>
-        <div class="alert alert-danger" >
-          <div *ngIf="firstName.touched && firstName.errors?.required">
-          First Name is required</div>
-          <div *ngIf="firstName.touched && firstName.errors?.pattern">
-          First Name is invalid</div><!-- End First Name Input -->
-        </div>
+        </section>
       </section>
-    <!-- End Form group -->
-      <section class="form-group col-12">
-        <input 
-        ngModel 
-        #lname="ngModel"
-        name="lastName"
-        pattern="^[A-Za-z]{3,9}$" 
-        required
-        (change)="log(lname)"
-        id="lastName"
-        type="text" 
-        class="form-control" 
-        placeholder="Last Name">
-        <div class="alert alert-danger" >
-          <div *ngIf="lname.touched && lname.errors?.required">
-          Last Name is required</div>
-          <div *ngIf="lname.touched && lname.errors?.pattern">
-          Last Name is invalid</div><!-- End First Name Input -->
-      </div>
+      <!-- Form Buttons -->
+      <section class="col-12">
+        <button [disabled]="f.invalid" class="btn  d-block mx-auto mb-1 btn w-50 text-white add-btn">
+          Add Contacts
+        </button>
+        <button class="btn cancel-btn d-block mx-auto w-50 text-white">Cancel</button></section>
+      <!-- <p>{{f.value | json}}</p> -->
     </section>
-
-      <section class="form-group d-flex col-12">
-        <select
-        ngModel 
-        #city="ngModel" 
-        required
-        id="cityCode" 
-        name="cityCode" 
-        type="text" 
-        class="form-control w-25">
-        <option value=""></option>
-        <option *ngFor="let code of phoneCodes;" class="text-right">+{{code}}</option>
-      </select>
-        <input 
-        ngModel 
-        #phone="ngModel"
-        pattern="^(\d{10}){1}?$"
-        minlength="7"
-        maxlength="11" 
-        required 
-        id="mobileNumber" 
-        name="mobileNumber" 
-        type="text" 
-        class="form-control">
-        <div class="alert alert-danger">
-          <div *ngIf="phone.touched && phone.errors?.required">
-        Phone Number is required.</div>
-        <div *ngIf="phone.touched && phone.errors?.minlength">
-        minimum 7 digits.</div>
-        <div *ngIf="phone.touched && phone.errors?.maxlength">
-        maximum 10 digits.</div>
-        <div *ngIf="phone.touched && phone.errors?.pattern">
-        the number not vaild.</div>
-      </div><!-- End Phone Number Input -->
-      </section>
-      <section class="form-group col-12">
-        <input 
-        ngModel 
-        #email="ngModel"
-        name="email"
-        pattern="^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" 
-        required 
-        id="email"
-        placeholder="Email Address"
-        type="text" 
-        class="form-control">
-         <div class="alert alert-danger"> 
-        <div *ngIf="email.touched && email.errors?.required">
-        Email is required</div>
-        <div *ngIf="email.touched && email.errors?.pattern">
-        Your input doesn't match email format
-        </div>
-      </div><!-- End Email Input -->
-    </section>
-
-
-      <button 
-      [disabled]="f.invalid" 
-      class="btn btn-primary d-block m-auto">
-      Add Contacts
-      </button>
-      <button class="btn btn-success d-block m-auto">Cancle</button>
-  <p>{{f.value | json}}</p>
-</section>
-</form>
-
+  </form>
 </section>

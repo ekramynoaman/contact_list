@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import recent from 'src/assets/recent-contact.json';
 
@@ -8,9 +7,9 @@ import recent from 'src/assets/recent-contact.json';
 })
 export class RecentContactsService {
 
-  constructor(private http: HttpClientModule) { }
-
-  getRecentContacts (): Observable<any> {
+  constructor() { }
+  // Get recent Contacts from json file
+  getRecentContacts(): Observable<any> {
     return of(recent).pipe();
   }
 }

@@ -1,19 +1,58 @@
-.media {
-    height: 8rem;
-    border-bottom: 1px solid #e3e4e6;
+.title {
+    border-bottom: 2px solid rgba(59, 153, 240, 0.699);
+    margin-bottom: 2rem;
+
 }
 
-.media-body {
-    border: 1px solid green
+
+
+.media {
+    height: 8rem;
+}
+
+.imgLabel {
+    cursor: pointer;
 }
 
 
 .form-control {
     border: none;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid rgba(59, 153, 240, 0.699);
     border-radius: 0;
 }
 
 .form-control.ng-touched.ng-invalid {
-    border-color: red;
+    border-color: f5c6cb;
 }
+
+
+.alert {
+    padding: 0;
+    border: none;
+}
+
+button {
+    font-size: 1.25rem;
+    font-family: sans-serif;
+}
+
+.btn {
+    border-radius: 0.75rem !important;
+}
+
+.add-btn {
+    background-color: rgb(20, 190, 94);
+}
+
+.cancel-btn {
+    background-color: rgb(37, 37, 116);
+}
+
+
+@media (max-width: 400px) { 
+
+    button {
+        font-size: 0.8rem;
+    }
+    
+ }

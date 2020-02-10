@@ -1,51 +1,72 @@
-<section class="container-fluid">
-    <h1 class="text-center" >Contact List</h1>
-    <section class="row">
-        <section class="col">
-            <div  class="search_form px-5 py-2">
-                <input [(ngModel)]="letter" type="text" class="form-control rounded-pill" placeholder="Search Contact">
-            </div>
-        </section>
+<section>
+  <h1 #target class="text-center" >Contact List</h1>
+  <section class="row">
+    <section class="col">
+      <!-- search input -->
+      <section class="search_form px-5 py-2">
+        <input [(ngModel)]="letter" type="text" 
+        class="form-control rounded-pill search_form_input"
+        placeholder="&#xF002; Search Contacts">
+      </section>
     </section>
-    <section class="contacts">
-        <section class="row">
-            <section class="col-sm-11"><p class="category p-1">Add New Contact</p></section>
-            <section class="col-sm-1"><i class="fas fa-plus"></i></section>
+  </section>
+  <!-- Contacts section -->
+  <section class="contacts p-2">
+    <section class="row category_row p-2 no-gutters">
+      <section class="col-10">
+        <p class="category">Add New Contact</p>
+      </section>
+      <!-- add Contact link to form -->
+      <section class="col-2 text-right add">
+        <i class="fas fa-plus" routerLink="/addContact"></i>
+      </section>
+    </section>
+    <!-- Latest contacts Hide when searching -->
+    <section *ngIf="!letter" class="latest_contacts category_row  no-gutters">
+      <p class="category">Latest Contacts</p>
+      <section class="media mb-1 p-1 bg-white" *ngFor="let item of recentContacts;" @fade>
+        <a class="d-flex h-100" href="#">
+          <img [src]="item.image == null || undefined ? item.image:img" alt="" class="h-100">
+        </a>
+        <section class="media-body p-1" id="a">
+          <h5 class="mb-0 text-capitalize">{{item.firstName}} {{item.lastName}}</h5>
+          <p class="small">0{{item.mobileNumber}}</p>
         </section>
-        <!-- Latest contacts  -->
-        <section *ngIf="!letter" class="latest_contacts bg-white">
-            <p class="category p-1">Latest Contacts</p>
-            <div class="media mb-2 p-1" *ngFor="let item of recentContacts;">
-                <a class="d-flex h-100" href="#">
-                    <img [src]="item.image == null || undefined ? item.image:img" alt="" class="h-100">
-                </a>
-                <div class="media-body p-1">
-                    <h5 class="mb-0 text-capitalize">{{item.firstName}} {{item.lastName}}</h5>
-                    <p class="small">0{{item.mobileNumber}}</p>
-                </div>
-            </div>
-        </section>
+      </section>
+    </section>
+    <!-- Contacts list with alphabtical catagory -->
+    <section class="position-relative" *ngIf="!letter" >
+      <section class="contacts_list"   *ngFor="let char of chars index as x;">
+        <section class="category px-2" [id]="x">{{char}}</section>
+      
+        <section class="media p-1 bg-white"  *ngFor=" let contact of contacts|search:char;">
+          
+          <a class="d-flex h-100" href="#" >
+            <img [src]="contact.image == null || undefined ? contact.image:img" [alt]="" 
+            class="h-100">
+          </a>
+          <section class="media-body p-1  " >
+            <h5 class="mb-0 text-capitalize">{{contact.firstName}} {{contact.lastName}}</h5>
+            <p class="small">{{contact.email}}</p>
+          </section>
         
-        <section class="position-relative">
-        <section class="contacts_list bg-white " *ngFor="let char of chars;">
-            <div class="category p-1">{{char}}</div>
-        <div class="media mb-2 p-1" *ngFor=" let contact of contacts|search:letter||char ;">
-            <a class="d-flex h-100" href="#">
-                <img [src]="contact.image == null || undefined ? contact.image:img" alt="" class="h-100">
-            </a>
-            <div class="media-body p-1">
-                <h5 class="mb-0 text-capitalize">{{contact.firstName}} {{contact.lastName}}</h5>
-                <p class="small">{{contact.email}}</p>
-            </div>
-        </div>
-    </section>
-    <section class="letters_bar h-100 " >
-            <div class="small" *ngFor="let char of chars;">{{char}}</div>
+      </section></section>
+      <section class="letters_bar h-100 d-flex flex-column">
+        <a class="small letters_bar-letter text-center" 
+        *ngFor="let char of chars index as i;" [ngx-scroll-to]="i" ng>{{char}}</a></section>
+      </section>
+      <!-- Contacts search list -->
+      <section *ngIf="letter">
+        <section class="media p-1 bg-white"  *ngFor=" let contact of contacts|search:letter;">
+          <a class="d-flex h-100" href="#">
+            <img [src]="contact.image == null || undefined ? contact.image:img" alt="" 
+            class="h-100">
+          </a>
+          <section class="media-body p-1">
+            <h5 class="mb-0 text-capitalize">{{contact.firstName}} {{contact.lastName}}</h5>
+            <p class="small">{{contact.email}}</p>
+          </section>
         </section>
+      </section>
     </section>
-</section>
-
-
-</section>
-
-
+  </section>

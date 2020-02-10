@@ -10,9 +10,17 @@
     border-top-right-radius: 1rem;
 }
 
-.form-control::placeholder {
+  
+  .search_form_input::placeholder {
+    font-family: "Font Awesome 5 Free", Arial; 
+    font-weight: 600;
     text-align: center;
+    color: rgba(159, 162, 167, 0.4);
+    
+  }
 
+.add {
+    cursor: pointer;
 }
 
 .letters_bar {
@@ -23,15 +31,40 @@
     z-index: 999;
 }
 
-.contacts {    background-color: whitesmoke;
+.letters_bar-letter {
+    cursor: pointer;
+}
+
+.contacts {    
+    background-color: whitesmoke;
+}
+
+.category_row {
+    border-bottom: 3px solid #e3e4e6;
+    
+
 }
 .category{
-    background-color: rgb(204, 198, 198);
+
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin: 0;
+    
 }
 .media {
     height: 4rem;
     border-bottom: 1px solid #e3e4e6;
 }
 
+
+
+
+
+@media (max-width: 400px) { 
+
+    h5 {
+        font-size: 1rem;
+    }
+    .small {
+        font-size: 70%;
+    }
+ }

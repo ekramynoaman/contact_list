@@ -7,7 +7,7 @@ export class SearchPipe implements PipeTransform {
 
 
   transform( contacts, letter: string): any {
-    if (letter == undefined ) {
+    if (letter === undefined ) {
       return contacts;
     }
     return contacts.filter(( contacts ) => {
