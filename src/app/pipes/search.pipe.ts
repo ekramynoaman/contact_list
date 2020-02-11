@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
     }
     return contacts.filter(( contacts ) => {
 
-      return contacts.firstName.charAt(0).toLowerCase().includes(letter.toLowerCase());
+      return contacts.firstName.toLowerCase().includes(letter.toLowerCase());
 
     });
 

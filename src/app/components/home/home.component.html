@@ -11,7 +11,7 @@
     </section>
   </section>
   <!-- Contacts section -->
-  <section class="contacts p-2">
+  <section class="contacts">
     <section class="row category_row p-2 no-gutters">
       <section class="col-10">
         <p class="category">Add New Contact</p>
@@ -22,7 +22,7 @@
       </section>
     </section>
     <!-- Latest contacts Hide when searching -->
-    <section *ngIf="!letter" class="latest_contacts category_row  no-gutters">
+    <section *ngIf="!letter" class="latest_contacts category_row  no-gutters p-2">
       <p class="category">Latest Contacts</p>
       <section class="media mb-1 p-1 bg-white" *ngFor="let item of recentContacts;" @fade>
         <a class="d-flex h-100" href="#">
@@ -35,11 +35,12 @@
       </section>
     </section>
     <!-- Contacts list with alphabtical catagory -->
-    <section class="position-relative" *ngIf="!letter" >
-      <section class="contacts_list"   *ngFor="let char of chars index as x;">
-        <section class="category px-2" [id]="x">{{char}}</section>
+    <section class="position-relative d-flex no-gutters p-2" *ngIf="!letter" >
+      <section class="w-100 flex-shrink-0">
+      <section class="contacts_list w-100"   *ngFor="let char of chars index as x;">
+        <section class="category" [id]="x">{{char}}</section>
       
-        <section class="media p-1 bg-white"  *ngFor=" let contact of contacts|search:char;">
+        <section class="media mb-1 p-1 bg-white w-100"  *ngFor=" let contact of contacts|search:char;">
           
           <a class="d-flex h-100" href="#" >
             <img [src]="contact.image == null || undefined ? contact.image:img" [alt]="" 
@@ -50,8 +51,8 @@
             <p class="small">{{contact.email}}</p>
           </section>
         
-      </section></section>
-      <section class="letters_bar h-100 d-flex flex-column">
+      </section></section></section>
+      <section class="letters_bar d-flex flex-column">
         <a class="small letters_bar-letter text-center" 
         *ngFor="let char of chars index as i;" [ngx-scroll-to]="i" ng>{{char}}</a></section>
       </section>

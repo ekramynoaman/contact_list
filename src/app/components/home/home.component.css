@@ -20,10 +20,15 @@
 
 .letters_bar {
     width: 1rem;
-    position: absolute;
-    right: 0;
-    top: 16px;
-    z-index: 999;
+    height: 500px;
+    right: 20px;
+    z-index: 999 !important;
+    -webkit-position :sticky;
+    -moz-position :sticky;
+    -ms-position :sticky;
+    position :sticky;
+    
+    
 }
 
 .letters_bar-letter {
