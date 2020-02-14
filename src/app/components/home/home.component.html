@@ -1,4 +1,4 @@
-<section class="p-2">
+<section class="container">
   <h1 #target class="text-center" >Contact List</h1>
   <section class="row">
     <section class="col">
@@ -40,7 +40,7 @@
       <section class="contacts_list w-100"   *ngFor="let char of chars index as x;">
         <section class="category" [id]="x">{{char}}</section>
       
-        <section class="media mb-1 p-1 bg-white w-100"  *ngFor=" let contact of contacts|search:char;">
+        <section class="media mb-1 p-1 bg-white w-100"  *ngFor=" let contact of contacts|filter:char;">
           
           <a class="d-flex h-100" href="#" >
             <img [src]="contact.image == null || undefined ? contact.image:img" [alt]="" 

@@ -11,13 +11,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AddContactComponent,
     NotFoundComponent,
-    SearchPipe
+    SearchPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -20,13 +20,12 @@
 
 .letters_bar {
     width: 1rem;
-    height: 500px;
-    right: 20px;
+    height: 418px;
     z-index: 999 !important;
-    -webkit-position :sticky;
-    -moz-position :sticky;
-    -ms-position :sticky;
     position :sticky;
+    top: 4%;
+    right: 8%;
+    border: 1px solid rgba(159, 162, 167, 0.4);
     
     
 }
@@ -66,5 +65,10 @@
     }
     .small {
         font-size: 70%;
+    }
+
+    .letters_bar
+    {
+        right: 5%;
     }
  }
